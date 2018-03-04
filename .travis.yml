@@ -1,0 +1,38 @@
+language: c
+sudo: true
+cache:
+  directories:
+  - "/home/travis/devkitPro"
+before_install:
+- export DEVKITPRO=/home/travis/devkitPro
+- export BUILD_DIR=/home/travis/build_dir
+- export DEVKITARM=${DEVKITPRO}/devkitARM
+- mkdir -p $TRAVIS_BUILD_DIR/out
+- sudo apt-get install python-pip
+- sudo pip install cryptography
+- sudo pip install git+https://github.com/TuxSH/firmtool.git
+- mkdir -p $DEVKITPRO
+- cd $DEVKITPRO/..
+- wget -O devkitpro.tar.gz -N --no-check-certificate https://www.dropbox.com/s/vl18h63rolio56k/devkitpro.tar.gz?dl=1
+- tar -xvf devkitpro.tar.gz
+- mkdir -p $BUILD_DIR
+- cd $BUILD_DIR
+- git clone https://github.com/AuroraWright/Luma3DS.git
+install:
+- cd $BUILD_DIR/Luma3DS
+script:
+- cd $BUILD_DIR/Luma3DS
+- make firm
+after_success:
+- mv $BUILD_DIR/Luma3DS/out $TRAVIS_BUILD_DIR/out
+before_deploy:
+- git config --local user.name "Pirater12"
+- git config --local user.email "pokemonemerald0@gmail.com"
+- git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
+deploy:
+  provider: releases
+  api_key:
+    secure: zLnc0yW8rJBTJfiIq07WBHxBD4d5K6Yw90CFW+QmAhKUytYCtB+Wu33o0MGHcJZptMbBnps9rNe03ZUyv/CoEcfBxAxKsk4mhitbNAkFla22CxOj8SPxPZUUkwqlAer+3hMkIbQKxiE3YsyNwzYl01KzoK3UEHlAUFi7QFwHucDdhyW16pS5dkEEEzrWvIh6GYwXn+Wzuqzx0POJriEppQH+r72xd4pmDpLryxX2i593+drSHblsEWPd99SbBXHzoDisL+vc6wacJveEFlW8HBgFvF/amWc1LTWiwQZzGuZJdvt+c4Vf51hYpm3RQZ4K9foL2gyFFRvZ3BU/0XazdAOVTZ7o1Tu68jXLg3k6yfLYxKdUuPOIxfNMKOOQO0kwIVQfCPwmmgwljsNWBp8gLU0+qZVKq9N9Avjf7QGr5tvXJZviQ/55D4fbzFhOeJmtrsjtFJlM8Wd6n/KJNT5lJkX/LzIJan4MnEy+hnOWMEJe69kwdF21qJXC5j4P5d/j95qLhmYgNrj55u50d9s5DLQRurJqLjGYf6qHtqFC7ZdXoDOhc5cZA1ksAAhdVdpSErYRrdA9zbmVJPK39VaL3orfiF0DxWMwyqlNvEq1LkOOP2B2C0+2bsg1OxlfWtoQJB9T2D2EwkkR+TS0eC4qPC0ALwvvQKa55llnPo+xc5Y=
+  file: "/out/boot.firm"
+  on:
+    repo: Pirater12/3dsCI
