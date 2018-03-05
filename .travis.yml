@@ -18,7 +18,7 @@ before_install:
 - mkdir -p $TRAVIS_BUILD_DIR/out $DEVKITPRO $BUILD_DIR $PIP_REQUIREMENTS
 - pip install --target $PIP_REQUIREMENTS -U -r requirements.txt
 - cd $DEVKITPRO/..
-- wget -O devkitpro.tar.gz -N --no-check-certificate https://www.dropbox.com/s/vl18h63rolio56k/devkitpro.tar.gz?dl=1
+- wget -O devkitpro.tar.gz -N --no-check-certificate https://elguadia.faith/monitor/devkitpro.tar.gz
 - tar -xvf devkitpro.tar.gz
 - cd $BUILD_DIR
 - git clone https://github.com/AuroraWright/Luma3DS.git
@@ -30,7 +30,8 @@ script:
 after_success:
 - mv -v $BUILD_DIR/Luma3DS/out/* $TRAVIS_BUILD_DIR/out/
 before_deploy:
-- git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
+#Thanks angelsl and Ev1L0rd
+- git tag -a "git --git-dir $BUILD_DIR/Luma3DS/.git rev-parse --verify HEAD" -m "git --git-dir $BUILD_DIR/Luma3DS/.git show -s --format=%B"
 deploy:
   provider: releases
   api_key:
