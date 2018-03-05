@@ -1,0 +1,2 @@
+cryptography
+git+https://github.com/TuxSH/firmtool.git
