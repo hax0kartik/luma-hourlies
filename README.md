@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/Pirater12/luma-nightlies.svg?branch=master)](https://travis-ci.org/Pirater12/luma-nightlies)
 
-Compiled binaries for the latest commit are available on the release page. The luma repo is checked once every 24 hours.
+Compiled binaries for the latest commit are available on the release page. The luma repo is checked for new commits once every 24 hours[15:00 JST].
 
 ## Credits:-
 
