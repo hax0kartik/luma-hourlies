@@ -7,7 +7,7 @@ addons:
       - python-pip
 
 cache:
- - directories:
+ directories:
   - "/home/travis/devkitPro"
   - "/home/travis/.local/lib"
 
