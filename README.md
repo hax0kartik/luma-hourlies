@@ -13,3 +13,5 @@ Luma devs for luma custom firmware
 @steveice10 for compiled builds of makerom
 
 @kingcom for armips
+
+@Ev1l0rd for improving the build system
