@@ -7,16 +7,16 @@ addons:
       - python-pip
 
 cache:
-  directories:
+ - directories:
   - "/home/travis/devkitPro"
-  - "/home/travis/pip-requirements"
+  - "/home/travis/.local/lib"
+
 before_install:
 - export DEVKITPRO=/home/travis/devkitPro
 - export BUILD_DIR=/home/travis/build_dir
 - export DEVKITARM=${DEVKITPRO}/devkitARM
-- export PIP_REQUIREMENTS=/home/travis/pip-requirements
-- mkdir -p $TRAVIS_BUILD_DIR/out $DEVKITPRO $BUILD_DIR $PIP_REQUIREMENTS
-- pip install --target $PIP_REQUIREMENTS -U -r requirements.txt
+- mkdir -p $TRAVIS_BUILD_DIR/out $DEVKITPRO $BUILD_DIR
+- pip install --user -U -r requirements.txt
 - cd $DEVKITPRO/..
 - wget -O devkitpro.tar.gz -N --no-check-certificate https://elguadia.faith/monitor/devkitpro.tar.gz
 - tar -xvf devkitpro.tar.gz
