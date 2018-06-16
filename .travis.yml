@@ -36,6 +36,7 @@ before_deploy:
 - git tag -a "$TRAVIS_BUILD_NUMBER-luma3ds-$(git --git-dir $BUILD_DIR/Luma3DS/.git rev-parse --short --verify HEAD)" -m "Travis build number $TRAVIS_BUILD_NUMBER"
 deploy:
   provider: releases
+  body: "$TRAVIS_BUILD_NUMBER"
   api_key:
     secure: zLnc0yW8rJBTJfiIq07WBHxBD4d5K6Yw90CFW+QmAhKUytYCtB+Wu33o0MGHcJZptMbBnps9rNe03ZUyv/CoEcfBxAxKsk4mhitbNAkFla22CxOj8SPxPZUUkwqlAer+3hMkIbQKxiE3YsyNwzYl01KzoK3UEHlAUFi7QFwHucDdhyW16pS5dkEEEzrWvIh6GYwXn+Wzuqzx0POJriEppQH+r72xd4pmDpLryxX2i593+drSHblsEWPd99SbBXHzoDisL+vc6wacJveEFlW8HBgFvF/amWc1LTWiwQZzGuZJdvt+c4Vf51hYpm3RQZ4K9foL2gyFFRvZ3BU/0XazdAOVTZ7o1Tu68jXLg3k6yfLYxKdUuPOIxfNMKOOQO0kwIVQfCPwmmgwljsNWBp8gLU0+qZVKq9N9Avjf7QGr5tvXJZviQ/55D4fbzFhOeJmtrsjtFJlM8Wd6n/KJNT5lJkX/LzIJan4MnEy+hnOWMEJe69kwdF21qJXC5j4P5d/j95qLhmYgNrj55u50d9s5DLQRurJqLjGYf6qHtqFC7ZdXoDOhc5cZA1ksAAhdVdpSErYRrdA9zbmVJPK39VaL3orfiF0DxWMwyqlNvEq1LkOOP2B2C0+2bsg1OxlfWtoQJB9T2D2EwkkR+TS0eC4qPC0ALwvvQKa55llnPo+xc5Y=
   file: "$TRAVIS_BUILD_DIR/out/boot.firm"
