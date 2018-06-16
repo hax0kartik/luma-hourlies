@@ -33,7 +33,8 @@ after_success:
 - mv -v $BUILD_DIR/Luma3DS/out/* $TRAVIS_BUILD_DIR/out/
 before_deploy:
 #Thanks angelsl and Ev1L0rd
-- git tag -a "$TRAVIS_BUILD_NUMBER-luma3ds-$(git --git-dir $BUILD_DIR/Luma3DS/.git rev-parse --short --verify HEAD)" -m "Build for luma commit $(git --git-dir $BUILD_DIR/Luma3DS/.git rev-parse --short --verify HEAD)"
+- git tag -a "$TRAVIS_BUILD_NUMBER-luma3ds-$(git --git-dir $BUILD_DIR/Luma3DS/.git rev-parse --short --verify HEAD)" -m "Travis build number $TRAVIS_BUILD_NUMBER"
+- git push --tags
 deploy:
   provider: releases
   api_key:
