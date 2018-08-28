@@ -6,7 +6,7 @@ Compiled binaries for the latest commit are available on the release page. The l
 
 ## Credits:-
 
-@knight-ryu12 for providing me with a server
+@noirscape for providing me with a server
 
 Luma devs for luma custom firmware
 
