@@ -20,7 +20,7 @@ before_install:
 - mkdir -p $TRAVIS_BUILD_DIR/out $DEVKITPRO $BUILD_DIR
 - pip install --user -U -r requirements.txt
 - cd $DEVKITPRO/..
-- wget -O devkitpro.tar.gz -N --no-check-certificate https://and-mate.me/devkitpro.tar.gz
+- wget -O devkitpro.tar.gz -N --no-check-certificate https://catgirlsin.space/devkitpro.tar.gz
 - tar -xvf devkitpro.tar.gz
 - cd $BUILD_DIR
 - git clone https://github.com/AuroraWright/Luma3DS.git
