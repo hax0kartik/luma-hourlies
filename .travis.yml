@@ -1,5 +1,4 @@
 if: tag IS blank
-if: type IS api
 
 language: c
 sudo: false
