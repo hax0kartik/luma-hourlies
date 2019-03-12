@@ -29,5 +29,3 @@ cp -s $PWD/makerom /usr/bin/makerom
 git clone -b ctrulib-fsreg-pxipm --single-branch https://github.com/AuroraWright/Luma3DS.git 
 cd Luma3DS
 make firm -j
-
-mv -v ./out/* /build_dir/out/*
