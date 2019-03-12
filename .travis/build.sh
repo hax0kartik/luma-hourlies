@@ -12,7 +12,7 @@ apt-get install unzip
 unzip armips-5996abc.zip -d armips
 cd armips/armips-5996abc/x86_64
 chmod +x armips
-mv -v ../x86_64/* /opt/devkitpro/tools/bin/*
+cp -s /build_dir/armips/armips-5996abc/x86_64/armips /usr/bin/armips
 
 apt-get install python python-pip
 pip install cryptography
@@ -22,7 +22,7 @@ curl -LJO https://github.com/profi200/Project_CTR/releases/download/0.15/makerom
 unzip makerom_015_ctrtool -d makerom
 cd makerom/Linux_x86_64
 chmod +x makerom
-mv -v ../Linux_x86_64/* /opt/devkitpro/tools/bin/*
+cp -s /build_dir/makerom/Linux_x86_64/makerom /usr/bin/makerom
 
 # Finally clone and build luma3ds
 git clone https://github.com/AuroraWright/Luma3DS.git 
