@@ -10,7 +10,7 @@ make install release -j
 curl -LJO https://ev1l0rd.s-ul.eu/mEIk4atQ
 apt-get install unzip
 unzip armips-5996abc.zip -d armips
-cd armips-5996abc/x86_64
+cd armips/armips-5996abc/x86_64
 chmod +x armips
 cp -s armips /usr/bin/armips
 
