@@ -2,7 +2,7 @@ source /etc/profile.d/devkit-env.sh
 
 # Install ctrulib
 cd build_dir
-git clone https://www.github.com/smealum/ctrulib.git
+git clone -b ctrulib-fsreg-pxipm --single-branch https://www.github.com/smealum/ctrulib.git
 cd ctrulib/libctru 
 make install release -j
 
@@ -21,9 +21,7 @@ pip3 install cryptography
 pip3 install git+https://github.com/TuxSH/firmtool.git
 
 cd /build_dir
-curl -LJO https://github.com/profi200/Project_CTR/releases/download/0.15/makerom_015_ctrtool.zip
-unzip makerom_015_ctrtool -d makerom
-cd makerom/Linux_x86_64
+curl -LJO https://cdn.discordapp.com/attachments/356378491375190016/554910371052519464/makerom
 chmod +x makerom
 cp -s $PWD/makerom /usr/bin/makerom
 
