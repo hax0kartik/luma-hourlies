@@ -16,9 +16,9 @@ chmod +x armips
 echo $PWD
 cp -s $PWD/armips /usr/bin/armips
 
-apt-get install python python-pip -y
-pip install cryptography
-pip install git+https://github.com/TuxSH/firmtool.git
+apt-get update && apt-get install python3 python3-pip -y
+pip3 install cryptography
+pip3 install git+https://github.com/TuxSH/firmtool.git
 
 cd /build_dir
 curl -LJO https://github.com/profi200/Project_CTR/releases/download/0.15/makerom_015_ctrtool.zip
