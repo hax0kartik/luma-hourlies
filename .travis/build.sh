@@ -2,7 +2,7 @@ source /etc/profile.d/devkit-env.sh
 
 # Install ctrulib
 cd build_dir
-git clone -b ctrulib-fsreg-pxipm --single-branch https://www.github.com/smealum/ctrulib.git
+git clone https://www.github.com/smealum/ctrulib.git
 cd ctrulib/libctru 
 make install release -j
 
@@ -26,7 +26,7 @@ chmod +x makerom
 cp -s $PWD/makerom /usr/bin/makerom
 
 # Finally clone and build luma3ds
-git clone https://github.com/AuroraWright/Luma3DS.git 
+git clone -b ctrulib-fsreg-pxipm --single-branch https://github.com/AuroraWright/Luma3DS.git 
 cd Luma3DS
 make firm -j
 
