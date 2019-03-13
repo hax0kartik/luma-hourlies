@@ -29,4 +29,4 @@ cp -s $PWD/makerom /usr/bin/makerom
 # Finally clone and build luma3ds
 git clone https://github.com/AuroraWright/Luma3DS.git 
 cd Luma3DS
-make firm -j
+make firm -j2
