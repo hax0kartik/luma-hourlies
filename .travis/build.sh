@@ -1,15 +1,15 @@
 source /etc/profile.d/devkit-env.sh
 
 # Install ctrulib
+apt-get install unzip
 cd build_dir
-git clone https://www.github.com/smealum/ctrulib.git
-cd ctrulib/libctru 
+curl -LJO https://github.com/smealum/ctrulib/archive/v1.5.1.zip
+cd ctrulib-1.5.1/libctru 
 make install release -j
 
 # Install armips, firmtool and makerom
 cd /build_dir
 curl -LJO https://ev1l0rd.s-ul.eu/mEIk4atQ
-apt-get install unzip
 unzip armips-5996abc.zip -d armips
 cd armips/armips-5996abc/x86_64
 chmod +x armips
