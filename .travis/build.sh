@@ -4,7 +4,8 @@ source /etc/profile.d/devkit-env.sh
 apt-get install unzip
 cd build_dir
 curl -LJO https://github.com/smealum/ctrulib/archive/v1.5.1.zip
-cd ctrulib-1.5.1/libctru 
+unzip ctrulib-1.5.1.zip -d ctrulib
+cd ctrulib/ctrulib-1.5.1/libctru 
 make install release -j
 
 # Install armips, firmtool and makerom
