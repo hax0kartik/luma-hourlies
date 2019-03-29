@@ -3,9 +3,8 @@ source /etc/profile.d/devkit-env.sh
 # Install ctrulib
 apt-get install unzip
 cd build_dir
-curl -LJO https://github.com/smealum/ctrulib/archive/v1.5.1.zip
-unzip ctrulib-1.5.1.zip -d ctrulib
-cd ctrulib/ctrulib-1.5.1/libctru 
+git clone https://github.com/smealum/ctrulib.git
+cd ctrulib/libctru 
 make install release -j
 
 # Install firmtool and makerom
