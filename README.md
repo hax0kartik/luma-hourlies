@@ -1,15 +1,17 @@
-# luma-nightlies
+# luma-hourlies (previously luma-nightlies)
 
 [![Build Status](https://travis-ci.org/hax0kartik/luma-hourlies.svg?branch=master)](https://travis-ci.org/hax0kartik/luma-hourlies)
 
-Compiled binaries for the latest commit are available on the release page. The luma repo is checked for new commits hourly.
+The Luma3DS repo is checked for new commits hourly.
 
-## Credits:-
+Compiled binaries for the latest commit are available **[here](https://github.com/hax0kartik/luma-hourlies/releases/latest/download/boot.firm)**.
 
-@noirscape for providing me with a server
+## Credits:
 
-Luma devs for luma custom firmware
+@noirscape for providing me with a server.
 
-@steveice10 for compiled builds of makerom
+Luma3DS devs for Luma3DS custom firmware.
 
-@kingcom for armips
+@Steveice10 for compiled builds of makerom.
+
+@Kingcom for armips.

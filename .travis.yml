@@ -1,10 +1,9 @@
 if: tag IS blank
 
-language: c
-sudo: false
+dist: bionic
+language: minimal
 
-services: 
-- docker
+services: docker
 
 install:
 - docker pull devkitpro/devkitarm
@@ -12,8 +11,7 @@ install:
 script:
 - docker run -e ENABLE_COMPATIBILITY_REPORTING -v $TRAVIS_BUILD_DIR:/build_dir devkitpro/devkitarm /bin/bash -ex /build_dir/.travis/build.sh
 
-before_deploy:
-#Thanks angelsl and Ev1L0rd
+before_deploy: #Thanks angelsl and Ev1L0rd
 - git tag -a "$TRAVIS_BUILD_NUMBER-luma3ds-$(git --git-dir $TRAVIS_BUILD_DIR/Luma3DS/.git rev-parse --short --verify HEAD)" -m "Travis build number $TRAVIS_BUILD_NUMBER"
 deploy:
   provider: releases
