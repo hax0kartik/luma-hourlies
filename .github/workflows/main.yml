@@ -37,8 +37,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.KEY }}
       with:
-        tag_name: luma3ds-${{ GITHUB_RUN_NUMBER }}
-        release_name: luma3ds-${{ GITHUB_RUN_NUMBER }}
+        tag_name: luma3ds-$GITHUB_RUN_NUMBER
+        release_name: luma3ds-$GITHUB_RUN_NUMBER
         draft: false
         prerelease: false
     - name: Upload Release Asset
