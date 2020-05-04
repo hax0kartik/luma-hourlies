@@ -1,5 +1,8 @@
 source /etc/profile.d/devkit-env.sh
 
+# Run check.py
+python check.py
+
 # Install ctrulib
 apt-get update && apt-get install p7zip-full python3 python3-pip -y
 cd build_dir
