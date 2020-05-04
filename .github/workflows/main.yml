@@ -35,7 +35,7 @@ jobs:
       id: generate_body
       run: |
         commit= git --git-dir ./Luma3DS/.git rev-parse --short --verify HEAD
-        echo ::set-output name=body::$commit
+        echo "::set-output name=body::$commit"
 
     - name: Create Release
       id: create_release
