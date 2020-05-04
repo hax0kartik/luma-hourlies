@@ -30,7 +30,13 @@ jobs:
         docker pull devkitpro/devkitarm
         docker run -e ENABLE_COMPATIBILITY_REPORTING -v $GITHUB_WORKSPACE:/build_dir devkitpro/devkitarm /bin/bash -ex /build_dir/.travis/build.sh
         echo $GITHUB_WORKSPACE
-    
+
+    - name: generate body
+      id: generate_body
+      run: |
+        commit= git --git-dir ./Luma3DS/.git log -1 --oneline
+        echo ::set-output name=body::$commit
+
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
@@ -41,6 +47,8 @@ jobs:
         release_name: luma3ds-${{ github.run_number }}
         draft: false
         prerelease: false
+        body: ${{ steps.generate_body.outputs.body }}
+
     - name: Upload Release Asset
       id: upload-release-asset 
       uses: actions/upload-release-asset@v1
