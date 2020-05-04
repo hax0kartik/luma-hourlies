@@ -30,6 +30,9 @@ jobs:
         docker pull devkitpro/devkitarm
         docker run -e ENABLE_COMPATIBILITY_REPORTING -v $GITHUB_WORKSPACE:/build_dir devkitpro/devkitarm /bin/bash -ex /build_dir/.travis/build.sh
     
+    - name: tag
+      run: git tag -a "luma3ds-$(git --git-dir $GITHUB_WORKSPACE/Luma3DS/.git rev-parse --short --verify HEAD)" -m "Workspace build number $GITHUB_RUN_NUMBER"
+    
     - name: release
       uses: softprops/action-gh-release@v1
       with:
