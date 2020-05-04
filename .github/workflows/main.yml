@@ -30,15 +30,12 @@ jobs:
         docker pull devkitpro/devkitarm
         docker run -e ENABLE_COMPATIBILITY_REPORTING -v $GITHUB_WORKSPACE:/build_dir devkitpro/devkitarm /bin/bash -ex /build_dir/.travis/build.sh
     
-    - name: before-tag
-      run: 
-        CUSTOM_TAG= git --git-dir $GITHUB_WORKSPACE/Luma3DS/.git rev-parse --short --verify HEAD
-    
     - name: tag
-      uses: anothrNick/github-tag-action@1.17.2
-      env:
-        GITHUB_TOKEN: ${{ secrets.key }}
-        
+      run: |
+        git config --global user.email "pokemonemerald0@gmail.com"
+        git config --global user.name "hax0kartik"
+        git tag -a "luma3ds-$(git --git-dir $GITHUB_WORKSPACE/Luma3DS/.git rev-parse --short --verify HEAD)" -m "Workspace build number $GITHUB_RUN_NUMBER"
+    
     - name: release
       uses: softprops/action-gh-release@v1
       with:
