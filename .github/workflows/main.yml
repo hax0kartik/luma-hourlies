@@ -2,15 +2,11 @@
 
 name: CI
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
-on:
-  repository_dispatch:
-    branches: [ master ]
+# Controls when the action will run. Triggers the workflow on push or on scheduled crons:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  schedule:
+    - cron: '0 * * * *'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -29,7 +25,6 @@ jobs:
       run: |
         docker pull devkitpro/devkitarm
         docker run -e ENABLE_COMPATIBILITY_REPORTING -v $GITHUB_WORKSPACE:/build_dir devkitpro/devkitarm /bin/bash -ex /build_dir/.files/build.sh
-        echo $GITHUB_WORKSPACE
 
     - name: Generate Body and Hash
       if: ${{ success() }}
@@ -45,11 +40,13 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.KEY }}
       with:
-        tag_name: luma3ds-${{ github.run_number }}-${{ env.hash }}
-        release_name: luma3ds-${{ github.run_number }}-${{ env.hash }}
+        tag_name: luma3ds-${{ env.hash }}
+        release_name: luma3ds-${{ env.hash }}
         draft: false
         prerelease: false
-        body: ${{ env.body }}
+        body: | 
+          ${{ env.body }}
+          Link to commit: https://github.com/AuroraWright/Luma3DS/commit/${{ env.hash }}
 
     - name: Upload Release Asset
       if: ${{ success() }}
