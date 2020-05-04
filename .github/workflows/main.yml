@@ -34,8 +34,8 @@ jobs:
     - name: generate body
       id: generate_body
       run: |
-        commit= git --git-dir ./Luma3DS/.git rev-parse --short --verify HEAD
-        echo "::set-env name=body::$(git --git-dir ./Luma3DS/.git rev-parse --short --verify HEAD)"
+        echo "::set-env name=body::$(git --git-dir ./Luma3DS/.git log -1 --oneline)"
+        echo "::set-env name=hash::$(git --git-dir ./Luma3DS/.git rev-parse --short --verify HEAD)"
 
     - name: Create Release
       id: create_release
@@ -43,8 +43,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.KEY }}
       with:
-        tag_name: luma3ds-${{ github.run_number }}-${{ env.body }}
-        release_name: luma3ds-${{ github.run_number }}-${{ env.body }}
+        tag_name: luma3ds-${{ github.run_number }}-${{ env.hash }}
+        release_name: luma3ds-${{ github.run_number }}-${{ env.hash }}
         draft: false
         prerelease: false
         body: ${{ env.body }}
