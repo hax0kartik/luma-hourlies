@@ -26,7 +26,7 @@ jobs:
         git clone https://github.com/devkitpro/docker
         cd docker/devkitarm
         docker build -t devkitarm .
-        cd /
+        cd $GITHUB_WORKSPACE
         docker run -e ENABLE_COMPATIBILITY_REPORTING -v $GITHUB_WORKSPACE:/build_dir devkitarm /bin/bash -ex /build_dir/.files/build.sh
         tar -zcvf build.tar.gz ./Luma3DS
 
