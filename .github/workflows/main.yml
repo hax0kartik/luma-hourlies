@@ -25,6 +25,7 @@ jobs:
       run: |
         docker pull devkitpro/devkitarm
         docker run -e ENABLE_COMPATIBILITY_REPORTING -v $GITHUB_WORKSPACE:/build_dir devkitpro/devkitarm /bin/bash -ex /build_dir/.files/build.sh
+        tar -zcvf build.tar.gz ./Luma3DS
 
     - name: Generate Body and Hash
       if: ${{ success() }}
@@ -56,10 +57,12 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.KEY }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-        asset_path: |
-            ./Luma3DS/boot.firm
-            ./Luma3DS/sysmodules/pxi/pxi.elf
-        asset_name: |
-              boot.firm
-              pxi.elf
+        asset_path: ./Luma3DS/boot.firm
+        asset_name: boot.firm
         asset_content_type: application/octet-stream
+    
+    - name: Upload artifact for debugs
+      uses: actions/upload-artifact@v1
+      with:
+        name: Luma3ds-build
+        path: ./build.tar.gz
