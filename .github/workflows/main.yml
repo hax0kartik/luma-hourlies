@@ -40,8 +40,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.KEY }}
       with:
-        tag_name: luma3ds-${{ env.hash }}
-        release_name: luma3ds-${{ env.hash }}
+        tag_name: ${{ github.run_number }}-luma3ds-${{ env.hash }}
+        release_name: ${{ github.run_number }}-luma3ds-${{ env.hash }}
         draft: false
         prerelease: false
         body: | 
