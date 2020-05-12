@@ -4,4 +4,4 @@ r = requests.get("https://api.github.com/repos/hax0kartik/Luma-hourlies/releases
 if(r.ok):
     data = json.loads(r.text or r.content)
     latest_tag_name = data['name'][:data['name'].find('-')]
-    print(latest_tag_name)
+    print(int(latest_tag_name) + 1)
