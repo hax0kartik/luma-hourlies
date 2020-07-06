@@ -2,9 +2,6 @@ source /etc/profile.d/devkit-env.sh
 
 apt-get update && apt-get install p7zip-full python3 python3-pip -y
 
-# Run check.py
-pip3 install requests
-python3 /build_dir/.files/check.py
 # Install ctrulib
 cd build_dir
 git clone https://github.com/smealum/ctrulib.git

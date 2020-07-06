@@ -17,7 +17,7 @@ jobs:
     - name: Check for new commits
       run: |
         pip install requests
-        python ./files/check.py
+        python ./.files/check.py
       
   build:
     # The type of runner that the job will run on
