@@ -9,10 +9,19 @@ on:
     - cron: '0 * * * *'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
-  # This workflow contains a single job called "build"
+jobs: 
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check for new commits
+      run: |
+        pip install requests
+        python ./files/check.py
+      
   build:
     # The type of runner that the job will run on
+    needs: check
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
