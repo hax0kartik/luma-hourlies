@@ -18,7 +18,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Check for new commits
-    - id: s1
+      id: s1
       run: |
         pip install requests
         echo "::set-output name=output::$(python $GITHUB_WORKSPACE/.files/check.py)"
