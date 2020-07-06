@@ -17,6 +17,7 @@ jobs:
     - name: Check for new commits
       run: |
         pip install requests
+        ls -la
         python $GITHUB_WORKSPACE/.files/check.py
       
   build:
