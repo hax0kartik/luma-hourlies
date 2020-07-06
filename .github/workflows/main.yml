@@ -23,7 +23,7 @@ jobs:
     # Runs a set of commands using the runners shell
     - name: Build
       run: |
-        docker run -e ENABLE_COMPATIBILITY_REPORTING -v $GITHUB_WORKSPACE:/build_dir devkitpro/devkitarm:latest /bin/bash -ex /build_dir/.files/build.sh
+        docker run -e ENABLE_COMPATIBILITY_REPORTING -v $GITHUB_WORKSPACE:/build_dir devkitpro/devkitarm /bin/bash -ex /build_dir/.files/build.sh
         tar -zcvf build.tar.gz ./Luma3DS
 
     - name: Generate Body and Hash
