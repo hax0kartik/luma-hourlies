@@ -13,6 +13,6 @@ if(r.ok):
     latest_tag_name = data['name'][data['name'].rfind('-') + 1:]
 
 if latest_tag_name == luma3ds_commit_hash:
-    sys.exit(-1)
+    print("N")
 else:
-    sys.exit(0)
+    print("Y")
