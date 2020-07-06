@@ -15,4 +15,4 @@ if(r.ok):
 if latest_tag_name == luma3ds_commit_hash:
     print("N")
 else:
-    print("N")
+    print("Y")
