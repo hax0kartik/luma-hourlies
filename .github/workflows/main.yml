@@ -43,10 +43,10 @@ jobs:
       if: ${{ success() }}
       id: generate_body
       run: |
-        echo "::set-env name=body::$(git --git-dir ./Luma3DS/.git log -1 --oneline)"
-        echo "::set-env name=hash::$(git --git-dir ./Luma3DS/.git rev-parse --short --verify HEAD)"
+        echo "body=$(git --git-dir ./Luma3DS/.git log -1 --oneline)" >> $GITHUB_ENV
+        echo "hash=$(git --git-dir ./Luma3DS/.git rev-parse --short --verify HEAD)" >> $GITHUB_ENV
         python -mpip install requests
-        echo "::set-env name=build_number::$(python ./.files/get_build_number.py)"
+        echo "build_number=$(python ./.files/get_build_number.py)" >> $GITHUB_ENV
 
     - name: Create Release
       if: ${{ success() }}
